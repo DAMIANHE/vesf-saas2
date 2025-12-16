@@ -8,7 +8,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
-      <body>
+      <body style={{ padding: "40px", background: "#111", color: "#fff" }}>
+        <h2>LAYOUT OK</h2>
         {children}
       </body>
     </html>
