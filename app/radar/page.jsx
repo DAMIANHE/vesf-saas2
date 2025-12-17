@@ -8,12 +8,11 @@ const RadarChartClient = dynamic(
 export default function RadarPage() {
   return (
     <main>
-      <h2 style={{ marginBottom: 8 }}>Radar VEFS — DEMO</h2>
-      <p style={{ opacity: 0.85, maxWidth: 720 }}>
-        Visualización ejecutiva de riesgos invisibles detectados a partir de
-        Señales Débiles. El área y la forma del polígono revelan patrones que
-        anticipan impacto potencial en el VAN.
-      </p>
+      <h2 style={{ marginBottom: 8 }}>
+  VEFS — Radar Estratégico de Riesgo Invisible
+</h2>
+
+     
 <p style={{ marginBottom: 16, maxWidth: 760 }}>
   Este radar no muestra indicadores históricos.  
   Muestra <strong>riesgos invisibles</strong> detectados a partir de Señales Débiles
@@ -26,12 +25,27 @@ export default function RadarPage() {
   polígono, mayor es la dispersión de riesgos estratégicos y mayor la
   probabilidad de impacto silencioso en el VAN si no se actúa a tiempo.
 </p>
+<section style={{ marginTop: 24, maxWidth: 760 }}>
+  <p>
+    En la mayoría de las organizaciones, los riesgos se detectan
+    cuando ya impactaron en resultados, liquidez o rentabilidad.
+  </p>
+  <p style={{ opacity: 0.85 }}>
+    VEFS cambia ese enfoque: permite visualizar señales tempranas
+    de tensión estratégica y actuar antes de que el riesgo se
+    vuelva evidente.
+  </p>
+</section>
 
       <RadarChartClient />
 
       <p style={{ marginTop: 24, opacity: 0.75 }}>
         *Datos simulados con fines demostrativos.
       </p>
+      <h3 style={{ marginTop: 40 }}>
+  ¿Qué está mostrando este radar?
+</h3>
+
       <section style={{ marginTop: 40 }}>
   <h3>Lectura estratégica por variable</h3>
 
@@ -126,6 +140,26 @@ export default function RadarPage() {
   <p style={{ opacity: 0.85 }}>
     La ventaja no está en predecir el futuro, sino en
     <strong>reducir sorpresas estratégicas</strong>.
+  </p>
+</section>
+<section style={{ marginTop: 48, maxWidth: 760 }}>
+  <h3>¿Qué decisión habilita VEFS?</h3>
+
+  <p>
+    VEFS no reemplaza los estados financieros ni los indicadores
+    tradicionales. Los complementa.
+  </p>
+
+  <p style={{ opacity: 0.85 }}>
+    Su valor está en reducir sorpresas estratégicas,
+    permitiendo al directorio anticipar escenarios,
+    priorizar acciones y proteger el VAN antes de que
+    el impacto sea irreversible.
+  </p>
+
+  <p style={{ marginTop: 16, fontWeight: "bold" }}>
+    La ventaja competitiva no está en reaccionar rápido,
+    sino en ver antes.
   </p>
 </section>
 
