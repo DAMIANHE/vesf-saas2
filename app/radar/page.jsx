@@ -130,18 +130,7 @@ export default function RadarPage() {
     </tbody>
   </table>
 </section>
-<section style={{ marginTop: 40, maxWidth: 760 }}>
-  <h3>¿Qué decisión habilita VEFS?</h3>
-  <p>
-    VEFS no reemplaza el análisis financiero tradicional.
-    Lo complementa, permitiendo actuar <strong>antes</strong> de que los
-    riesgos se vuelvan visibles en los estados financieros.
-  </p>
-  <p style={{ opacity: 0.85 }}>
-    La ventaja no está en predecir el futuro, sino en
-    <strong>reducir sorpresas estratégicas</strong>.
-  </p>
-</section>
+
 <section style={{ marginTop: 48, maxWidth: 760 }}>
   <h3>¿Qué decisión habilita VEFS?</h3>
 
