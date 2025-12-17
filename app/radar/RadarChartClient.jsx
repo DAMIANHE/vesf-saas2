@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   Radar,
   RadarChart,
@@ -10,7 +11,7 @@ import {
   ResponsiveContainer
 } from "recharts";
 
-const data = [
+const baseData = [
   { variable: "Inflación", valor: 72 },
   { variable: "Morosidad", valor: 68 },
   { variable: "Fondeo", valor: 55 },
@@ -23,57 +24,88 @@ const data = [
   { variable: "Regulación", valor: 53 }
 ];
 
+const conservativeData = [
+  { variable: "Inflación", valor: 60 },
+  { variable: "Morosidad", valor: 55 },
+  { variable: "Fondeo", valor: 50 },
+  { variable: "Crecimiento", valor: 58 },
+  { variable: "Liquidez", valor: 62 },
+  { variable: "Capital", valor: 70 },
+  { variable: "Digitalización", valor: 55 },
+  { variable: "Productividad", valor: 60 },
+  { variable: "Confianza", valor: 72 },
+  { variable: "Regulación", valor: 50 }
+];
+
+const stressData = [
+  { variable: "Inflación", valor: 85 },
+  { variable: "Morosidad", valor: 80 },
+  { variable: "Fondeo", valor: 72 },
+  { variable: "Crecimiento", valor: 55 },
+  { variable: "Liquidez", valor: 48 },
+  { variable: "Capital", valor: 52 },
+  { variable: "Digitalización", valor: 45 },
+  { variable: "Productividad", valor: 50 },
+  { variable: "Confianza", valor: 58 },
+  { variable: "Regulación", valor: 65 }
+];
+
 export default function RadarChartClient() {
+  const [scenario, setScenario] = useState("base");
+
+  const scenarioData =
+    scenario === "conservative"
+      ? conservativeData
+      : scenario === "stress"
+      ? stressData
+      : baseData;
+
   return (
-    <div
-      style={{
-        width: "100%",
-        height: 420,
-        background: "linear-gradient(180deg, #0b1220 0%, #0f172a 100%)",
-        borderRadius: 16,
-        padding: 16,
-        boxShadow: "0 0 40px rgba(56,189,248,0.15)"
-      }}
-    >
-      <ResponsiveContainer>
-        <RadarChart data={data}>
-          <defs>
-            <linearGradient id="vefsGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#38bdf8" stopOpacity={0.85} />
-              <stop offset="100%" stopColor="#7c3aed" stopOpacity={0.55} />
-            </linearGradient>
-          </defs>
+    <>
+      {/* Selector de escenario */}
+      <div style={{ marginBottom: 16 }}>
+        <strong>Escenario:</strong>{" "}
+        <button onClick={() => setScenario("conservative")}>
+          Conservador
+        </button>{" "}
+        <button onClick={() => setScenario("base")}>
+          Base
+        </button>{" "}
+        <button onClick={() => setScenario("stress")}>
+          Tensión
+        </button>
+      </div>
 
-          <PolarGrid stroke="#334155" />
-          <PolarAngleAxis
-            dataKey="variable"
-            tick={{ fill: "#e5e7eb", fontSize: 12 }}
-          />
-          <PolarRadiusAxis
-            angle={30}
-            domain={[0, 100]}
-            tick={{ fill: "#94a3b8", fontSize: 10 }}
-          />
-
-          <Radar
-            dataKey="valor"
-            stroke="#38bdf8"
-            fill="url(#vefsGradient)"
-            fillOpacity={0.7}
-            strokeWidth={2}
-          />
-
-          <Tooltip
-            contentStyle={{
-              backgroundColor: "#020617",
-              border: "1px solid #38bdf8",
-              borderRadius: 8,
-              color: "#e5e7eb"
-            }}
-            cursor={{ stroke: "#38bdf8", strokeDasharray: "3 3" }}
-          />
-        </RadarChart>
-      </ResponsiveContainer>
-    </div>
+      {/* Radar */}
+      <div
+        style={{
+          width: "100%",
+          height: 420,
+          background: "linear-gradient(180deg, #0b1220 0%, #0f172a 100%)",
+          borderRadius: 16,
+          padding: 16,
+          boxShadow: "0 0 40px rgba(56,189,248,0.15)"
+        }}
+      >
+        <ResponsiveContainer>
+          <RadarChart data={scenarioData}>
+            <PolarGrid stroke="#334155" />
+            <PolarAngleAxis
+              dataKey="variable"
+              tick={{ fill: "#e5e7eb", fontSize: 12 }}
+            />
+            <PolarRadiusAxis domain={[0, 100]} />
+            <Radar
+              dataKey="valor"
+              stroke="#38bdf8"
+              fill="#38bdf8"
+              fillOpacity={0.6}
+              strokeWidth={2}
+            />
+            <Tooltip />
+          </RadarChart>
+        </ResponsiveContainer>
+      </div>
+    </>
   );
 }
