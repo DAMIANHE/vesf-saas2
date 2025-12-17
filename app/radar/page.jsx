@@ -1,4 +1,16 @@
-const vefsData = [
+"use client";
+
+import {
+  Radar,
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  PolarRadiusAxis,
+  Tooltip,
+  ResponsiveContainer
+} from "recharts";
+
+const data = [
   { variable: "Inflación", valor: 72 },
   { variable: "Morosidad", valor: 68 },
   { variable: "Fondeo", valor: 55 },
@@ -14,34 +26,33 @@ const vefsData = [
 export default function RadarPage() {
   return (
     <main>
-      <h2>Radar VEFS – Datos DEMO</h2>
+      <h2>Radar VEFS – DEMO</h2>
 
       <p>
-        Este radar representa un análisis preliminar de riesgo invisible
-        basado en Señales Débiles. Los valores son simulados y se
-        presentan únicamente con fines demostrativos.
+        Visualización interactiva de riesgos invisibles basada en
+        Señales Débiles. Datos simulados con fines demostrativos.
       </p>
 
-      <table style={{ width: "100%", marginTop: "20px", borderCollapse: "collapse" }}>
-        <thead>
-          <tr>
-            <th align="left">Variable</th>
-            <th align="left">Nivel de Riesgo</th>
-          </tr>
-        </thead>
-        <tbody>
-          {vefsData.map((item) => (
-            <tr key={item.variable}>
-              <td style={{ padding: "8px 0" }}>{item.variable}</td>
-              <td style={{ padding: "8px 0" }}>{item.valor} / 100</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div style={{ width: "100%", height: 400, marginTop: 40 }}>
+        <ResponsiveContainer>
+          <RadarChart data={data}>
+            <PolarGrid stroke="#334155" />
+            <PolarAngleAxis dataKey="variable" stroke="#e5e7eb" />
+            <PolarRadiusAxis angle={30} domain={[0, 100]} />
+            <Radar
+              dataKey="valor"
+              stroke="#38bdf8"
+              fill="#38bdf8"
+              fillOpacity={0.4}
+            />
+            <Tooltip />
+          </RadarChart>
+        </ResponsiveContainer>
+      </div>
 
-      <p style={{ marginTop: "30px", opacity: 0.8 }}>
-        En la versión completa, estos datos se visualizan en un Radar
-        interactivo y se comparan contra escenarios futuros.
+      <p style={{ marginTop: 30, opacity: 0.8 }}>
+        En la versión completa, este radar permite simular escenarios
+        y evaluar impacto en el VAN.
       </p>
     </main>
   );
